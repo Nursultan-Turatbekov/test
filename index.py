@@ -72,3 +72,35 @@ class SimpleIterator:
             return 1
         else:
             raise StopIteration
+
+#Генератор   
+def simple_generator(val):
+   while val > 0:
+       val -= 1
+       yield 1
+
+gen_iter = simple_generator(5)
+
+# Метоклассы
+def my_metaclass(class_name, parents, attributes):
+    print('In metaclass, creating the class.')
+    return type(class_name, parents, attributes)
+
+
+def my_class_decorator(class_):
+    print('In decorator, chance to modify the claqss.')
+    return class_
+
+
+@my_class_decorator
+class C(metaclass=my_metaclass):
+    def __init__(self):
+        print('Creating object.')
+
+#Экземпляр класса
+class Student:
+    def __init__(self, name, age, major, gpa):
+    self.name = name
+    self.age = age
+    self.major = major
+    self.gpa = gpa    
