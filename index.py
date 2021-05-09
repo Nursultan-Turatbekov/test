@@ -40,4 +40,35 @@ class B(ABC):
 class Ad(B):
     def hello(self):
         super().hello()
-        print("Hi")        
+        print("Hi")   
+
+#Композиция 
+class Salary:
+    def __init__(self,pay):
+        self.pay = pay
+
+    def getTotal(self):
+        return (self.pay*12)
+
+class Employee:
+    def __init__(self,pay,bonus):
+        self.pay = pay
+        self.bonus = bonus
+        self.salary = Salary(self.pay)
+
+    def annualSalary(self):
+        return "Total: " + str(self.salary.getTotal() + self.bonus)
+
+#Итератор
+
+class SimpleIterator:
+    def __init__(self, limit):
+        self.limit = limit
+        self.counter = 0
+
+    def __next__(self):
+        if self.counter < self.limit:
+            self.counter += 1
+            return 1
+        else:
+            raise StopIteration
